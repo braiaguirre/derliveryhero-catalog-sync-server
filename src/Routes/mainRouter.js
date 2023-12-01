@@ -1,5 +1,9 @@
-const Router = require('express');
+const Router = require('express')
 
-const mainRouter = Router();
+const updateHandler = require('../Handlers/updateHandler')
 
-module.exports = mainRouter;
+const mainRouter = Router()
+
+mainRouter.get('/update', updateHandler)
+
+module.exports = mainRouter
