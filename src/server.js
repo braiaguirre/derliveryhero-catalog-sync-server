@@ -6,8 +6,8 @@ const bodyParser = require('body-parser');
 
 const server = express()
 
-server.use(cors())
 server.use(morgan("dev"))
+server.use(cors())
 server.use(express.json({ limit: '10mb' }));
 server.use(bodyParser.urlencoded({ extended: true, limit: '10mb' }));
 server.use(express.json())
