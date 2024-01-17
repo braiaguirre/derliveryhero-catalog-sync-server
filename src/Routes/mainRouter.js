@@ -1,9 +1,11 @@
 const Router = require('express')
 
+const getHandler = require('../Handlers/getHandler')
 const updateHandler = require('../Handlers/updateHandler')
 
 const mainRouter = Router()
 
-mainRouter.put('/update', updateHandler)
+mainRouter.get('/products/', getHandler)
+mainRouter.put('/products/', updateHandler)
 
 module.exports = mainRouter
