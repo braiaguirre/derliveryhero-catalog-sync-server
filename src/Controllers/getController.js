@@ -14,9 +14,9 @@ const getController = async () => {
     const dataOK = data.results.map(product => ({
         sku: product.cod_item,
         nombre: product.item,
-        price: product.precios[1].precio,
+        price: Number(product.precios[1].precio),
         active: product.stock[1].ctd_disponible > 0 ? 1 : 0,
-        maximum_sales_quantity: product.stock[1].ctd_disponible
+        maximum_sales_quantity: Number(product.stock[1].ctd_disponible)
     }))
     return dataOK;
 }
