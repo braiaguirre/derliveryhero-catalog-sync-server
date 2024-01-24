@@ -1,21 +1,19 @@
 const  axios  = require('axios');
-const { DUX_TOKEN } = process.env;
+const { DUX_TOKEN_256100, DUX_TOKEN_271082 } = process.env;
 
 const URL = 'https://erp.duxsoftware.com.ar/WSERP/rest/services/items';
 
-const getController = async () => {
+const getController = async (id) => {
     let offset = 0;
     let allProducts = [];
-
+    
     while (true) {
-
         await new Promise(resolve => setTimeout(resolve, 5000));
-
-        console.log(`Page:, ${ offset / 50 } | Offset: ${ offset }`);
+        console.log(`Vendor: ${id} | Page: ${ offset / 50 } | Offset: ${ offset }`);
 
         const { data } = await axios.get(`${URL}`, {
             params: { limit: '50', offset: offset },
-            headers: { accept: 'application/json', authorization: DUX_TOKEN }
+            headers: { accept: 'application/json', authorization: Number(id) === 271082 ? DUX_TOKEN_271082 : DUX_TOKEN_256100 }
         });
 
         allProducts.push(

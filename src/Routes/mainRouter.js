@@ -5,7 +5,7 @@ const updateHandler = require('../Handlers/updateHandler')
 
 const mainRouter = Router()
 
-mainRouter.get('/products/', getHandler)
+mainRouter.get('/products/:id', getHandler)
 mainRouter.put('/products/', updateHandler)
 
 module.exports = mainRouter
